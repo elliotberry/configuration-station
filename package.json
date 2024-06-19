@@ -1,0 +1,44 @@
+{
+    "name": "configuration-station",
+    "description": "a super simple wrapper for configstore that includes user prompting of said values in inquirer. so simply and easy i'm sure i fucked something up",
+    "main": "index.js",
+    "version": "0.0.1",
+    "author": "dad <elliot@email.gd>",
+    "license": "The Unlicense",
+    "bin": "./index.js",
+    "type": "module",
+    "dependencies": {
+        "configstore": "^6.0.0",
+        "inquirer": "^9.2.23"
+    },
+    "devDependencies": {
+        "@stylistic/eslint-plugin-js": "1.5.4",
+        "eslint": "^8.29.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "5.1.3",
+        "eslint-plugin-unicorn": "50.0.1",
+        "prettier": "^2.7.1"
+    },
+    "prettier": {
+        "arrowParens": "always",
+        "bracketSameLine": true,
+        "bracketSpacing": true,
+        "semi": false,
+        "experimentalTernaries": true,
+        "singleQuote": false,
+        "jsxSingleQuote": false,
+        "quoteProps": "as-needed",
+        "trailingComma": "none",
+        "singleAttributePerLine": false,
+        "htmlWhitespaceSensitivity": "css",
+        "vueIndentScriptAndStyle": false,
+        "proseWrap": "preserve",
+        "insertPragma": false,
+        "printWidth": 80,
+        "requirePragma": false,
+        "tabWidth": 2,
+        "useTabs": false,
+        "embeddedLanguageFormatting": "auto"
+    }
+    
+}
