@@ -4,7 +4,6 @@ import inquirer from "inquirer"
 
 class Confomobile {
   constructor(appName = "", schema) {
-   
     this.schema = schema
     this.appName = appName
     let emptySchema = Object.keys(schema).reduce((acc, key) => {
@@ -59,13 +58,15 @@ class Confomobile {
       this.config.set(key, answer)
     }
   }
-  async askForMissing() {
+  async valuesOrPrompts() {
     for await (const key of Object.keys(this.schema)) {
       if (this.get(key) === undefined) {
         await this.ask(key)
       }
     }
+    return this.getAll()
   }
+
   get(key) {
     return this.config.get(key)
   }
@@ -86,7 +87,7 @@ const confomobile = ({ appName, config }) => {
   const ask = confo.ask.bind(confo)
   const askAll = confo.askAll.bind(confo)
   const getAll = confo.getAll.bind(confo)
-const askForMissing = confo.askForMissing.bind(confo)
-  return { set, get, ask, getAll, askAll, askForMissing }
+  const valuesOrPrompts = confo.valuesOrPrompts.bind(confo)
+  return { set, get, ask, getAll, askAll, valuesOrPrompts }
 }
 export default confomobile

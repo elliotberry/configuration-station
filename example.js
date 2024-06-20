@@ -3,7 +3,7 @@
 //the config is a json object
 import confomobile from "./confomobile.js"
 const test = async () => {
-  let { set, get, ask, getAll, askAll } = confomobile({
+  let { set, get, ask, getAll, askAll, valuesOrPrompts } = confomobile({
     appName: "myapp",
     config: {
       api_key: "string",
