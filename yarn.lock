@@ -467,23 +467,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"config-prompter@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "config-prompter@workspace:."
-  dependencies:
-    "@stylistic/eslint-plugin-js": "npm:1.5.4"
-    configstore: "npm:^6.0.0"
-    eslint: "npm:^8.29.0"
-    eslint-config-prettier: "npm:^8.5.0"
-    eslint-plugin-prettier: "npm:5.1.3"
-    eslint-plugin-unicorn: "npm:50.0.1"
-    inquirer: "npm:^9.2.23"
-    prettier: "npm:^2.7.1"
-  bin:
-    config-prompter: ./index.js
-  languageName: unknown
-  linkType: soft
-
 "configstore@npm:^6.0.0":
   version: 6.0.0
   resolution: "configstore@npm:6.0.0"
@@ -496,6 +479,23 @@ __metadata:
   checksum: 10c0/6681a96038ab3e0397cbdf55e6e1624ac3dfa3afe955e219f683df060188a418bda043c9114a59a337e7aec9562b0a0c838ed7db24289e6d0c266bc8313b9580
   languageName: node
   linkType: hard
+
+"configuration-station@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "configuration-station@workspace:."
+  dependencies:
+    "@stylistic/eslint-plugin-js": "npm:1.5.4"
+    configstore: "npm:^6.0.0"
+    eslint: "npm:^8.29.0"
+    eslint-config-prettier: "npm:^8.5.0"
+    eslint-plugin-prettier: "npm:5.1.3"
+    eslint-plugin-unicorn: "npm:50.0.1"
+    inquirer: "npm:^9.2.23"
+    prettier: "npm:^2.7.1"
+  bin:
+    configuration-station: ./index.js
+  languageName: unknown
+  linkType: soft
 
 "core-js-compat@npm:^3.34.0":
   version: 3.35.1

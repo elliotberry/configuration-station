@@ -1,12 +1,11 @@
 import Configstore from "configstore"
-import readline from "readline"
 import inquirer from "inquirer"
 
-class Confomobile {
-  constructor(appName = "", schema) {
-    this.schema = schema
+class ConfigurationStation {
+  constructor({appName = "", config}) {
+    this.schema = config
     this.appName = appName
-    let emptySchema = Object.keys(schema).reduce((acc, key) => {
+    const emptySchema = Object.keys(this.schema).reduce((acc, key) => {
       acc[key] = undefined
       return acc
     }, {})
@@ -34,7 +33,7 @@ class Confomobile {
       messageStart = "Update"
       existingVal = this.get(key)
     }
-    let opts = {
+    const opts = {
       type: this.translateType(this.schema[key]),
       name: key,
       message: `${messageStart} ${keyName}:`
@@ -44,18 +43,19 @@ class Confomobile {
     }
 
     const answer = await inquirer.prompt(opts)
-    this.config.set(key, answer)
+
+    this.config.set(key, answer[key])
     return answer[key]
   }
 
   async askAll(schema = this.schema) {
-    for await (const key of Object.keys(schema)) {
+    let keyz = Object.keys(schema)
+    for await (let key of keyz) {
       let keyName = key
       if (schema[key].name) {
         keyName = schema[key].name
       }
-      const answer = await this.ask(key, keyName)
-      this.config.set(key, answer)
+      await this.ask(key, keyName)
     }
   }
   async valuesOrPrompts() {
@@ -80,14 +80,5 @@ class Confomobile {
   }
 }
 
-const confomobile = ({ appName, config }) => {
-  const confo = new Confomobile(appName, config)
-  const set = confo.set.bind(confo)
-  const get = confo.get.bind(confo)
-  const ask = confo.ask.bind(confo)
-  const askAll = confo.askAll.bind(confo)
-  const getAll = confo.getAll.bind(confo)
-  const valuesOrPrompts = confo.valuesOrPrompts.bind(confo)
-  return { set, get, ask, getAll, askAll, valuesOrPrompts }
-}
-export default confomobile
+
+export default ConfigurationStation
