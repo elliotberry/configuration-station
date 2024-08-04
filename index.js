@@ -2,69 +2,38 @@ import Configstore from "configstore"
 import inquirer from "inquirer"
 
 class ConfigurationStation {
-  constructor({appName = "", config}) {
+  constructor({ appName = "", config }) {
     this.schema = config
     this.appName = appName
-    const emptySchema = Object.keys(this.schema).reduce((acc, key) => {
-      acc[key] = undefined
-      return acc
-    }, {})
+    const emptySchema = Object.fromEntries(
+      Object.keys(this.schema).map((key) => [key, undefined])
+    )
 
     this.config = new Configstore(appName, emptySchema)
   }
-  translateType(type) {
-    switch (type) {
-      case "string":
-        return "input"
-      case "number":
-        return "number"
-      case "boolean":
-        return "confirm"
-      case "password":
-        return "password"
-      default:
-        return "input"
-    }
-  }
+
   async ask(key, keyName = key) {
-    let messageStart = "Enter"
-    let existingVal = undefined
-    if (this.get(key)) {
-      messageStart = "Update"
-      existingVal = this.get(key)
-    }
-    const opts = {
-      type: this.translateType(this.schema[key]),
+    const existingValue = this.get(key)
+    const messageStart = existingValue ? "Update" : "Enter"
+
+    const options = {
+      default: existingValue,
+      message: `${messageStart} ${keyName}:`,
       name: key,
-      message: `${messageStart} ${keyName}:`
-    }
-    if (existingVal) {
-      opts.default = existingVal
+      type: this.translateType(this.schema[key])
     }
 
-    const answer = await inquirer.prompt(opts)
+    const answer = await inquirer.prompt(options)
 
     this.config.set(key, answer[key])
     return answer[key]
   }
 
   async askAll(schema = this.schema) {
-    let keyz = Object.keys(schema)
-    for await (let key of keyz) {
-      let keyName = key
-      if (schema[key].name) {
-        keyName = schema[key].name
-      }
+    for (const key of Object.keys(schema)) {
+      const keyName = schema[key].name || key
       await this.ask(key, keyName)
     }
-  }
-  async valuesOrPrompts() {
-    for await (const key of Object.keys(this.schema)) {
-      if (this.get(key) === undefined) {
-        await this.ask(key)
-      }
-    }
-    return this.getAll()
   }
 
   get(key) {
@@ -78,7 +47,25 @@ class ConfigurationStation {
   set(key, value) {
     this.config.set(key, value)
   }
-}
 
+  translateType(type) {
+    const typeMap = {
+      boolean: "confirm",
+      number: "number",
+      password: "password",
+      string: "input"
+    }
+    return typeMap[type] || "input"
+  }
+
+  async valuesOrPrompts() {
+    for (const key of Object.keys(this.schema)) {
+      if (this.get(key) === undefined) {
+        await this.ask(key)
+      }
+    }
+    return this.getAll()
+  }
+}
 
 export default ConfigurationStation
