@@ -8,9 +8,9 @@
     "bin": "./index.js",
     "type": "module",
     "dependencies": {
-        "configstore": "^6.0.0",
+        "configstore": "^7.0.0",
         "elliotisms": "^0.0.37",
-        "inquirer": "^9.2.23"
+        "inquirer": "^10.1.6"
     },
     "prettier": {
         "arrowParens": "always",
@@ -34,14 +34,14 @@
         "embeddedLanguageFormatting": "auto"
     },
     "devDependencies": {
-        "@stylistic/eslint-plugin-js": "^2.1.0",
-        "eslint": "^9.2.0",
+        "@stylistic/eslint-plugin-js": "^2.6.1",
+        "eslint": "^9.8.0",
         "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-perfectionist": "^2.10.0",
-        "eslint-plugin-prettier": "^5.1.3",
-        "eslint-plugin-simple-import-sort": "^12.1.0",
-        "eslint-plugin-unicorn": "^53.0.0",
-        "prettier": "^3.2.5",
+        "eslint-plugin-perfectionist": "^3.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "eslint-plugin-unicorn": "^55.0.0",
+        "prettier": "^3.3.3",
         "release-it": "^17.6.0"
     }
 }
