@@ -14,3 +14,17 @@ const test = async () => {
   await config.askAll()
 }
 test()
+
+
+//example2 of a config fileL: 
+
+import ConfigurationStation from "configuration-station"
+const config = new ConfigurationStation({
+    appName: "dscimg",
+    config: {
+        cloudflareAIToken: "string",
+        cloudflareEndpoint: "string",
+    },
+})
+
+//export default config
