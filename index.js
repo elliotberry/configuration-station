@@ -28,7 +28,12 @@ class ConfigurationStation {
     this.config.set(key, answer[key])
     return answer[key]
   }
-
+ async delete(key) {
+    this.config.delete(key)
+  }
+  async deleteAll() {
+    this.config.clear()
+  }
   async askAll(schema = this.schema) {
     for (const key of Object.keys(schema)) {
       const keyName = schema[key].name || key
