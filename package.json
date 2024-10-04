@@ -2,7 +2,7 @@
     "name": "configuration-station",
     "description": "a super simple wrapper for configstore that includes user prompting of said values in inquirer. so simply and easy i'm sure i fucked something up",
     "main": "./index.js",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "author": "dad <elliot@email.gd>",
     "license": "The Unlicense",
     "bin": "./index.js",
