@@ -3,6 +3,7 @@
     "commitMessage": "chore: release v${version}"
   },
   "github": {
+    "skipChecks": true,
     "release": true
   }
 }
