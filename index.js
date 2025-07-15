@@ -10,6 +10,7 @@ class ConfigurationStation {
     )
 
     this.config = new Configstore(appName, emptySchema)
+    return this;
   }
 
   async ask(key, keyName = key) {
