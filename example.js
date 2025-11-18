@@ -2,6 +2,7 @@
 //the config is stored in a file in the user's home directory
 //the config is a json object
 import ConfigurationStation from "./index.js"
+
 const test = async () => {
   let config = new ConfigurationStation({
     appName: "assman",
@@ -13,13 +14,9 @@ const test = async () => {
   })
   await config.askAll()
 }
-test()
 
-
-//example2 of a config fileL: 
-
-import ConfigurationStation from "configuration-station"
-const config = new ConfigurationStation({
+//example2 of a config file: 
+const config2 = new ConfigurationStation({
     appName: "dscimg",
     config: {
         cloudflareAIToken: "string",
@@ -27,4 +24,5 @@ const config = new ConfigurationStation({
     },
 })
 
-//export default config
+//export default config2
+test()
